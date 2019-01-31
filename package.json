@@ -10,8 +10,11 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "firebase": "^5.8.1",
     "vue": "^2.5.21",
     "vue-router": "^3.0.1",
+    "vuetify": "^1.4.4",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
