@@ -12,4 +12,3 @@ export default {
       "Password must contain an upper case letter, a numeric character, and a special character"
   }
 };
-

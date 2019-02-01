@@ -8,4 +8,3 @@ export default {
     state.auth = { token: null, uid: null };
   }
 };
-

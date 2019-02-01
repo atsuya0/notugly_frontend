@@ -6,4 +6,3 @@ export default axiosbase.create({
     "Content-Type": "application/json"
   }
 });
-
