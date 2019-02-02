@@ -4,8 +4,8 @@ import userService from "@/api/user";
 import * as types from "./mutation-types";
 
 export default {
-  createUser: async ({ state }) => {
-    userService.post(state.auth.token).catch(err => {
+  createUser: async ({ state }, payload) => {
+    userService.post(payload, state.auth.token).catch(err => {
       throw err;
     });
   },
