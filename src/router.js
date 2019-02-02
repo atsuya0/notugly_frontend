@@ -16,7 +16,7 @@ const router = new Router({
   routes: [
     {
       path: "*",
-      redirect: "Browse"
+      redirect: "browse"
     },
     {
       path: "/signup",
@@ -41,8 +41,8 @@ const router = new Router({
       meta: { requiresAuth: true }
     },
     {
-      path: "/",
-      name: "Browse",
+      path: "/browse",
+      name: "browse",
       component: Browse,
       meta: { requiresAuth: true }
     }
