@@ -14,9 +14,9 @@ export default {
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
       .then(res => {
-        localStorage.setItem("token", res.user.qa);
+        localStorage.setItem("token", res.user.ra);
         commit(types.AUTH_SIGN, {
-          token: res.user.qa,
+          token: res.user.ra,
           uid: res.user.uid
         });
       })
@@ -29,9 +29,9 @@ export default {
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
       .then(res => {
-        localStorage.setItem("token", res.user.qa);
+        localStorage.setItem("token", res.user.ra);
         commit(types.AUTH_SIGN, {
-          token: res.user.qa,
+          token: res.user.ra,
           uid: res.user.uid
         });
       })
