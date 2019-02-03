@@ -37,7 +37,7 @@ export default {
   name: "Browse",
   data: () => ({
     id: -1,
-    image: "",
+    imageName: "",
     contributorId: "",
     createdAt: "",
     isFavorited: false,
@@ -50,8 +50,8 @@ export default {
   },
   computed: {
     imageSrc: function() {
-      if (this.image !== "") {
-        return `http://localhost:9000/images/${this.image}`;
+      if (this.imageName !== "") {
+        return `http://localhost:9000/images/${this.imageName}`;
       }
       return "";
     }
@@ -65,7 +65,7 @@ export default {
           console.log(err);
         });
       this.id = res.data.id;
-      this.image = res.data.image;
+      this.imageName = res.data.imageName;
       this.contributorId = res.data.userId;
       this.createdAt = res.data.createdAt;
       this.isFavorited = res.data.isFavorited;
