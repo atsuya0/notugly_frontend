@@ -20,7 +20,7 @@ export default {
   },
   data: () => ({
     menu: [
-      { title: "プロフィール", link: "/profile" },
+      { title: "マイページ", link: "/mypage" },
       { title: "サインアウト", link: "/signout" }
     ]
   }),
