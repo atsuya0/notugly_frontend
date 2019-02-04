@@ -23,7 +23,7 @@ export default {
     });
   },
   post: async (data, token) => {
-    client
+    return client
       .post("/coordinates", data, {
         headers: {
           Authorization: `Bearer ${token}`
