@@ -1,18 +1,23 @@
 <template>
   <v-container grid-list-lg>
-    <coordinates :coordinates="coordinates" />
-    <v-btn color="primary" fab fixed right bottom @click="dialog = true"
-      ><v-icon>add</v-icon></v-btn
-    >
-    <post-coordinate-dialog
-      :dialog="dialog"
-      @postCoordinate="postCoordinate"
-      @close="dialog = false"
-    />
+    <v-layout column>
+      <profile />
+      <v-divider />
+      <coordinates :coordinates="coordinates" />
+      <v-btn color="primary" fab fixed right bottom @click="dialog = true"
+        ><v-icon>add</v-icon></v-btn
+      >
+      <post-coordinate-dialog
+        :dialog="dialog"
+        @postCoordinate="postCoordinate"
+        @close="dialog = false"
+      />
+    </v-layout>
   </v-container>
 </template>
 
 <script>
+import Profile from "@/components/organisms/Profile.vue";
 import Coordinates from "@/components/organisms/Coordinates.vue";
 import PostCoordinateDialog from "@/components/organisms/PostCoordinateDialog.vue";
 import datetime from "@/mixins/Datetime";
@@ -21,6 +26,7 @@ import coordinateService from "@/api/coordinate";
 export default {
   name: "User",
   components: {
+    Profile,
     Coordinates,
     PostCoordinateDialog
   },
