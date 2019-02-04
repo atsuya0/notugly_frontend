@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import userService from "@/api/user";
 import validate from "@/validate.js";
 
 export default {
@@ -88,18 +89,22 @@ export default {
   methods: {
     signUp: async function() {
       this.isLoading = true;
-      await this.$store
+      const token = await this.$store
         .dispatch("signUp", {
           email: this.email,
           password: this.password
         })
-        .then(() => {
-          this.$store.dispatch("createUser", {
-            name: this.name,
-            sex: this.sex,
-            age: this.age
-          });
-        })
+        .catch(err => {
+          console.log(err);
+        });
+
+      const params = {
+        name: this.name,
+        sex: this.sex,
+        age: this.age
+      };
+      await userService
+        .post(params, token)
         .then(() => {
           this.$router.push("/");
         })

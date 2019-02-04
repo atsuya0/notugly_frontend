@@ -1,28 +1,23 @@
 import firebase from "firebase";
 
-import userService from "@/api/user";
 import * as types from "./mutation-types";
 
 export default {
-  createUser: async ({ state }, payload) => {
-    userService.post(payload, state.auth.token).catch(err => {
-      throw err;
-    });
-  },
   signUp: async ({ commit }, payload) => {
-    firebase
+    const res = await firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
-      .then(res => {
-        localStorage.setItem("token", res.user.ra);
-        commit(types.AUTH_SIGN, {
-          token: res.user.ra,
-          uid: res.user.uid
-        });
-      })
       .catch(err => {
         throw err;
       });
+
+    localStorage.setItem("token", res.user.ra);
+    commit(types.AUTH_SIGN, {
+      token: res.user.ra,
+      uid: res.user.uid
+    });
+
+    return res.user.ra;
   },
   signIn: async ({ commit }, payload) => {
     firebase
