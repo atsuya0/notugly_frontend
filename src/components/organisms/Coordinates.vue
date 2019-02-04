@@ -1,27 +1,23 @@
 <template>
   <v-layout justify-space-around align-baseline wrap>
-    <v-card
-      v-for="(coordinate, index) in coordinates"
-      :id="coordinate.id"
-      :key="index"
-      flat
-      hover
-    >
-      <v-img
-        :src="coordinate.imageName | toUrl"
-        contain
-        min-width="200"
-      ></v-img>
-      <v-card-actions>
-        <v-container>
-          <div class="grey--text">{{ coordinate.createdAt }}</div>
-          <v-layout justify-center>
-            <v-icon class="mr-1">thumb_up</v-icon>
-            <span class="subheading mr-1">{{ coordinate.favorites }}</span>
-          </v-layout>
-        </v-container>
-      </v-card-actions>
-    </v-card>
+    <v-flex v-for="coordinate in coordinates" :key="coordinate.id">
+      <v-card hover>
+        <v-img
+          :src="coordinate.imageName | toUrl"
+          contain
+          min-width="200"
+        ></v-img>
+        <v-card-actions>
+          <v-container>
+            <div class="grey--text">{{ coordinate.createdAt }}</div>
+            <v-layout justify-center>
+              <v-icon class="ma-1">thumb_up</v-icon>
+              <span class="subheading ma-1">{{ coordinate.favorites }}</span>
+            </v-layout>
+          </v-container>
+        </v-card-actions>
+      </v-card>
+    </v-flex>
   </v-layout>
 </template>
 
