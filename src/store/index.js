@@ -11,7 +11,8 @@ const state = {
   auth: {
     token: localStorage.getItem("token"),
     uid: null
-  }
+  },
+  sexList: ["WOMAN", "MAN"]
 };
 
 export default new Vuex.Store({

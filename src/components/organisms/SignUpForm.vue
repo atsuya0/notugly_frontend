@@ -42,10 +42,10 @@
         </v-text-field>
         <v-radio-group v-model="sex">
           <v-radio
-            v-for="item in sexList"
-            :key="item.code"
-            :label="item.text"
-            :value="item.code"
+            v-for="(item, index) in $store.state.sexList"
+            :key="index"
+            :label="item"
+            :value="index"
           ></v-radio>
         </v-radio-group>
         <v-slider v-model="age" thumb-label label="age"></v-slider>
@@ -80,7 +80,6 @@ export default {
     password: "",
     name: "",
     sex: 0,
-    sexList: [{ code: 0, text: "woman" }, { code: 1, text: "man" }],
     age: 0,
     valid: false,
     isLoading: false,
