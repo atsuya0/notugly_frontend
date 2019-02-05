@@ -2,7 +2,7 @@
   <v-toolbar color="primary" app>
     <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
       <router-link tag="div" to="/">
-        <span class="hidden-sm-and-down">NOTUGLY</span>
+        <span class="hidden-xs-only">NOTUGLY</span>
       </router-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
