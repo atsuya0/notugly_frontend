@@ -2,7 +2,6 @@
   <v-container grid-list-lg>
     <v-layout column>
       <profile />
-      <v-divider />
       <coordinates :coordinates="coordinates" />
       <v-btn color="primary" fab fixed right bottom @click="dialog = true"
         ><v-icon>add</v-icon></v-btn
