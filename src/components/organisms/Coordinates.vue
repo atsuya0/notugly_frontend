@@ -1,12 +1,15 @@
 <template>
-  <v-layout justify-space-around align-baseline wrap>
-    <v-flex v-for="coordinate in coordinates" :key="coordinate.id">
+  <v-layout align-baseline wrap>
+    <v-flex
+      lg3
+      md4
+      sm6
+      xs12
+      v-for="coordinate in coordinates"
+      :key="coordinate.id"
+    >
       <v-card hover>
-        <v-img
-          :src="coordinate.imageName | toUrl"
-          contain
-          min-width="200"
-        ></v-img>
+        <v-img :src="coordinate.imageName | toUrl" contain></v-img>
         <v-card-actions>
           <v-container>
             <div class="grey--text">{{ coordinate.createdAt }}</div>
