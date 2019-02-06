@@ -19,6 +19,9 @@
         @close="dialog = false"
       />
     </v-layout>
+    <v-snackbar v-model="message">
+      POSTED
+    </v-snackbar>
   </v-container>
 </template>
 
@@ -38,8 +41,9 @@ export default {
   },
   mixins: [datetime],
   data: () => ({
-    coordinates: [],
-    dialog: false
+    dialog: false,
+    message: false,
+    coordinates: []
   }),
   created: function() {
     this.fetchCoordinates();
@@ -73,6 +77,7 @@ export default {
               favorites: 0
             })
           ];
+          this.message = true;
         })
         .catch(err => {
           console.log(err);
