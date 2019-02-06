@@ -15,7 +15,7 @@
           <v-btn
             color="blue-grey lighten-4"
             :loading="isLoading"
-            :disabled="isLoading"
+            :disabled="isLoading || this.image === ''"
             @click="postCoordinate"
           >
             POST
