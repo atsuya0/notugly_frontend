@@ -51,7 +51,7 @@
         <v-slider v-model="age" thumb-label label="age"></v-slider>
       </v-form>
 
-      <router-link to="/signin">sign in now!</router-link>
+      <router-link to="{ name: 'signin' }">sign in now!</router-link>
     </v-card-text>
     <v-card-actions>
       <v-btn flat @click="$refs.form.reset()">
