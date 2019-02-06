@@ -6,6 +6,7 @@ import SignUp from "@/components/templates/SignUp.vue";
 import SignIn from "@/components/templates/SignIn.vue";
 import SignOut from "@/components/templates/SignOut.vue";
 import User from "@/components/templates/User.vue";
+import Settings from "@/components/templates/Settings.vue";
 import Browse from "@/components/templates/Browse.vue";
 
 Vue.use(Router);
@@ -38,6 +39,12 @@ const router = new Router({
       path: "/mypage",
       name: "mypage",
       component: User,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: "/settings",
+      name: "settings",
+      component: Settings,
       meta: { requiresAuth: true }
     },
     {
