@@ -52,14 +52,16 @@ export default {
   },
   methods: {
     fetchUser: async function() {
-      const res = await userService
+      await userService
         .get(this.$store.state.auth.uid)
+        .then(res => {
+          this.name = res.data.name;
+          this.sex = res.data.sex;
+          this.age = res.data.age;
+        })
         .catch(err => {
           console.log(err);
         });
-      this.name = res.data.name;
-      this.sex = res.data.sex;
-      this.age = res.data.age;
     },
     updateUser: async function() {
       this.isLoading = true;
@@ -68,12 +70,14 @@ export default {
         sex: this.sex,
         age: this.age
       };
-      const res = await userService
+      await userService
         .put(params, this.$store.state.auth.token)
+        .then(() => {
+          this.$router.push({ name: "mypage" });
+        })
         .catch(err => {
           console.log(err);
         });
-      await this.$router.push({name: 'mypage'});
       this.isLoading = false;
     }
   }

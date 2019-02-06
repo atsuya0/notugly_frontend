@@ -65,11 +65,14 @@ export default {
   methods: {
     signIn: async function() {
       this.isLoading = true;
-      await this.$store.dispatch("signIn", {
-        email: this.email,
-        password: this.password
-      });
-      await this.$router.push("/");
+      await this.$store
+        .dispatch("signIn", {
+          email: this.email,
+          password: this.password
+        })
+        .then(() => {
+          this.$router.push("/");
+        });
       this.isLoading = false;
     }
   }

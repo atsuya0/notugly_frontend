@@ -39,12 +39,14 @@ export default {
   },
   methods: {
     fetchCoordinates: async function() {
-      const res = await coordinateService
+      await coordinateService
         .getByUserId(this.$store.state.auth.uid)
+        .then(res => {
+          this.coordinates = res.data;
+        })
         .catch(err => {
           console.log(err);
         });
-      this.coordinates = res.data;
     },
     postCoordinate: async function(imageURI) {
       const encodedImage = imageURI.substr(imageURI.indexOf(",") + 1);
@@ -52,20 +54,22 @@ export default {
         image: encodedImage,
         createdAt: this.getDatetime()
       };
-      const res = await coordinateService
+      await coordinateService
         .post(params, this.$store.state.auth.token)
+        .then(res => {
+          this.coordinates = [
+            ...this.coordinates,
+            Object.assign({
+              id: res.data.id,
+              imageName: res.data.imageName,
+              createdAt: params.createdAt,
+              favorites: 0
+            })
+          ];
+        })
         .catch(err => {
           console.log(err);
         });
-      this.coordinates = [
-        ...this.coordinates,
-        Object.assign({
-          id: res.data.id,
-          imageName: res.data.imageName,
-          createdAt: params.createdAt,
-          favorites: 0
-        })
-      ];
     }
   }
 };

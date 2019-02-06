@@ -37,15 +37,17 @@ export default {
   },
   methods: {
     fetchUser: async function() {
-      const res = await userService
+      await userService
         .get(this.$store.state.auth.uid)
+        .then(res => {
+          this.id = res.data.id;
+          this.name = res.data.name;
+          this.sex = res.data.sex;
+          this.age = res.data.age;
+        })
         .catch(err => {
           console.log(err);
         });
-      this.id = res.data.id;
-      this.name = res.data.name;
-      this.sex = res.data.sex;
-      this.age = res.data.age;
     }
   }
 };

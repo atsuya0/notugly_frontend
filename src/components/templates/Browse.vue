@@ -59,47 +59,49 @@ export default {
   methods: {
     fetchCoordinate: async function() {
       this.isLoading = true;
-      const res = await coordinateService
+      await coordinateService
         .getAtRandom(this.$store.state.auth.token)
+        .then(res => {
+          this.id = res.data.id;
+          this.imageName = res.data.imageName;
+          this.contributorId = res.data.userId;
+          this.createdAt = res.data.createdAt;
+          this.isFavorited = res.data.isFavorited;
+        })
         .catch(err => {
           console.log(err);
         });
-      this.id = res.data.id;
-      this.imageName = res.data.imageName;
-      this.contributorId = res.data.userId;
-      this.createdAt = res.data.createdAt;
-      this.isFavorited = res.data.isFavorited;
       this.isLoading = false;
     },
     favorite: async function(params) {
-      favoriteService
+      await favoriteService
         .post(params, this.$store.state.auth.token)
         .then(() => {
           this.isFavorited = true;
         })
         .catch(err => {
-          throw err;
+          console.log(err);
         });
     },
     cancelFavorite: async function(params) {
-      favoriteService
+      await favoriteService
         .delete(params, this.$store.state.auth.token)
         .then(() => {
           this.isFavorited = false;
         })
         .catch(err => {
-          throw err;
+          console.log(err);
         });
     },
     toggleFavorite: async function() {
       this.isLoading = true;
       const params = { coordinateId: this.id };
       if (this.isFavorited) {
-        this.cancelFavorite(params).catch(err => {
+        await this.cancelFavorite(params).catch(err => {
           console.log(err);
         });
       } else {
-        this.favorite(params).catch(err => {
+        await this.favorite(params).catch(err => {
           console.log(err);
         });
       }
