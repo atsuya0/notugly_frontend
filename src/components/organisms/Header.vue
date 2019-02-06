@@ -1,7 +1,7 @@
 <template>
   <v-toolbar color="primary" app>
-    <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
-      <router-link tag="div" to="/">
+    <v-toolbar-title class="ml-0 pl-3">
+      <router-link tag="div" to="{name: 'browse'}">
         <span class="hidden-xs-only">NOTUGLY</span>
       </router-link>
     </v-toolbar-title>
@@ -20,8 +20,8 @@ export default {
   },
   data: () => ({
     menu: [
-      { title: "マイページ", link: "/mypage" },
-      { title: "サインアウト", link: "/signout" }
+      { title: "マイページ", link: "mypage" },
+      { title: "サインアウト", link: "signout" }
     ]
   }),
   props: {

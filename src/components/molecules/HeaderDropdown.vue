@@ -6,7 +6,7 @@
     <v-list>
       <v-list-tile v-for="(item, index) in menu" :key="index">
         <v-list-tile-title>
-          <router-link tag="div" :to="item.link">
+          <router-link tag="div" :to="{ name: item.link }">
             {{ item.title }}
           </router-link>
         </v-list-tile-title>
