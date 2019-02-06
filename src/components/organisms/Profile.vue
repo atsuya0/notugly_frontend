@@ -9,9 +9,12 @@
           <span>{{ id }}</span>
         </v-tooltip>
         <v-card-actions>
-          <span class="mx-2">{{ $store.state.sexList[sex] }}</span>
+          <span class="mx-2 grey--text">{{ $store.state.sexList[sex] }}</span>
           <span>/</span>
-          <span class="mx-2">{{ age }} years old</span>
+          <span class="mx-2 grey--text">{{ age }} years old</span>
+          <v-btn color="blue-grey lighten-2" outline icon href="/settings">
+            <v-icon>edit</v-icon>
+          </v-btn>
         </v-card-actions>
       </v-layout>
     </v-card>
