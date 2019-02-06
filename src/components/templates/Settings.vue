@@ -23,7 +23,7 @@
       <v-slider v-model="age" thumb-label label="age"></v-slider>
     </v-form>
     <v-btn
-      color="primary"
+      color="blue-grey lighten-4"
       :loading="isLoading"
       :disabled="!valid || isLoading"
       @click="updateUser"

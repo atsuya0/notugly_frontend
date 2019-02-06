@@ -1,6 +1,6 @@
 <template>
   <v-card class="elevation-12">
-    <v-toolbar dark color="primary">
+    <v-toolbar color="blue-grey lighten-4">
       <v-toolbar-title>
         Sign In Form
       </v-toolbar-title>
@@ -39,7 +39,7 @@
       </v-btn>
       <v-spacer></v-spacer>
       <v-btn
-        color="primary"
+        color="blue-grey lighten-4"
         :loading="isLoading"
         :disabled="!valid || isLoading"
         @click="signIn"

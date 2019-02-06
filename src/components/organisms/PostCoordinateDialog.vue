@@ -1,9 +1,9 @@
 <template>
   <v-layout row justify-center>
-    <v-dialog :value="dialog" persistent max-width="600px">
+    <v-dialog :value="dialog" persistent max-width="600">
       <v-card>
-        <v-card-title>
-          <span class="headline">Post coordinate</span>
+        <v-card-title class="headline blue-grey lighten-4">
+          Post coordinate
         </v-card-title>
         <v-card-text>
           <input type="file" accept="image/*" @change="readImage" />

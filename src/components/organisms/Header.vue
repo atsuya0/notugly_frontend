@@ -1,5 +1,5 @@
 <template>
-  <v-toolbar color="primary" app>
+  <v-toolbar color="blue-grey lighten-4" app>
     <v-toolbar-title class="ml-0 pl-3">
       <router-link tag="div" to="{name: 'browse'}">
         <span class="hidden-xs-only">NOTUGLY</span>

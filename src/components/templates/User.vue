@@ -3,9 +3,16 @@
     <v-layout column>
       <profile />
       <coordinates :coordinates="coordinates" />
-      <v-btn color="primary" fab fixed right bottom @click="dialog = true"
-        ><v-icon>add</v-icon></v-btn
+      <v-btn
+        color="blue-grey lighten-4"
+        fab
+        fixed
+        right
+        bottom
+        @click="dialog = true"
       >
+        <v-icon>add</v-icon>
+      </v-btn>
       <post-coordinate-dialog
         :dialog="dialog"
         @postCoordinate="postCoordinate"
