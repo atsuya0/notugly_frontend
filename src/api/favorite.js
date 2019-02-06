@@ -2,11 +2,14 @@ import client from "@/api/client";
 
 export default {
   post: async (data, token) => {
-    client
+    return await client
       .post("/favorites", data, {
         headers: {
           Authorization: `Bearer ${token}`
         }
+      })
+      .then(res => {
+        return res;
       })
       .catch(err => {
         throw err;
@@ -14,10 +17,13 @@ export default {
   },
   delete: async (data, token) => {
     const headers = { Authorization: `Bearer ${token}` };
-    client
+    return await client
       .delete("/favorites", {
         headers,
         data
+      })
+      .then(res => {
+        return res;
       })
       .catch(err => {
         throw err;
