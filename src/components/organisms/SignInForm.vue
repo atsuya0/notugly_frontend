@@ -31,7 +31,7 @@
         </v-text-field>
       </v-form>
 
-      <router-link to="{ name: 'signup' }">sign up now!</router-link>
+      <router-link to="/signup">sign up now!</router-link>
     </v-card-text>
     <v-card-actions>
       <v-btn flat @click="$refs.form.reset()">
