@@ -6,7 +6,6 @@ import "vuetify/dist/vuetify.min.css";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
-import * as types from "./store/mutation-types";
 
 Vue.config.productionTip = false;
 
@@ -23,14 +22,9 @@ firebase.initializeApp(config);
 
 Vue.use(Vuetify);
 
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    store.commit(types.AUTH_SIGN, { ...store.state.auth, uid: user.uid });
-  }
-  new Vue({
-    el: "#app",
-    router,
-    store,
-    render: h => h(App)
-  });
+new Vue({
+  el: "#app",
+  router,
+  store,
+  render: h => h(App)
 });

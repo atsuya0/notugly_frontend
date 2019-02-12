@@ -9,6 +9,9 @@ import User from "@/components/templates/User.vue";
 import Settings from "@/components/templates/Settings.vue";
 import Browse from "@/components/templates/Browse.vue";
 
+import store from "./store";
+import * as types from "./store/mutation-types";
+
 Vue.use(Router);
 
 const router = new Router({
@@ -18,22 +21,6 @@ const router = new Router({
     {
       path: "*",
       redirect: "browse"
-    },
-    {
-      path: "/signup",
-      name: "signup",
-      component: SignUp
-    },
-    {
-      path: "/signin",
-      name: "signin",
-      component: SignIn
-    },
-    {
-      path: "/signout",
-      name: "signout",
-      component: SignOut,
-      meta: { requiresAuth: true }
     },
     {
       path: "/mypage",
@@ -52,17 +39,44 @@ const router = new Router({
       name: "browse",
       component: Browse,
       meta: { requiresAuth: true }
+    },
+    {
+      path: "/signup",
+      name: "signup",
+      component: SignUp
+    },
+    {
+      path: "/signin",
+      name: "signin",
+      component: SignIn
+    },
+    {
+      path: "/signout",
+      name: "signout",
+      component: SignOut,
+      meta: { requiresAuth: true }
     }
   ]
 });
 
 router.beforeEach((to, from, next) => {
-  let currentUser = firebase.auth().currentUser;
-  let requiresAuth = to.matched.some(record => record.meta.requiresAuth);
-  if (requiresAuth && !currentUser) {
-    next("signin");
+  const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+  if (!requiresAuth) {
+    next();
+    return;
   }
-  next();
+
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      store.commit(types.AUTH_SIGN, { token: user.ra, uid: user.uid });
+      next();
+    } else {
+      next({
+        name: "signin",
+        query: { redirect: to.fullPath }
+      });
+    }
+  });
 });
 
 export default router;
