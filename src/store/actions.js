@@ -4,33 +4,35 @@ import * as types from "./mutation-types";
 
 export default {
   signUp: async ({ commit }, payload) => {
-    const res = await firebase
+    return firebase
       .auth()
       .createUserWithEmailAndPassword(payload.email, payload.password)
+      .then(res => {
+        localStorage.setItem("token", res.user.ra);
+        commit(types.AUTH_SIGN, {
+          token: res.user.ra,
+          uid: res.user.uid
+        });
+        return res.user.ra;
+      })
       .catch(err => {
         throw err;
       });
-
-    localStorage.setItem("token", res.user.ra);
-    commit(types.AUTH_SIGN, {
-      token: res.user.ra,
-      uid: res.user.uid
-    });
-
-    return res.user.ra;
   },
   signIn: async ({ commit }, payload) => {
-    const res = await firebase
+    return firebase
       .auth()
       .signInWithEmailAndPassword(payload.email, payload.password)
+      .then(res => {
+        localStorage.setItem("token", res.user.ra);
+        commit(types.AUTH_SIGN, {
+          token: res.user.ra,
+          uid: res.user.uid
+        });
+      })
       .catch(err => {
         throw err;
       });
-    localStorage.setItem("token", res.user.ra);
-    commit(types.AUTH_SIGN, {
-      token: res.user.ra,
-      uid: res.user.uid
-    });
   },
   signOut: async ({ commit }) => {
     firebase

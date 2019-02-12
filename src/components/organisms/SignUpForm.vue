@@ -89,20 +89,25 @@ export default {
   methods: {
     signUp: async function() {
       this.isLoading = true;
-      const token = await this.$store
-        .dispatch("signUp", {
-          email: this.email,
-          password: this.password
-        })
-        .catch(err => {
-          console.log(err);
-        });
 
       const params = {
         name: this.name,
         sex: this.sex,
         age: this.age
       };
+
+      const token = await this.$store
+        .dispatch("signUp", {
+          email: this.email,
+          password: this.password
+        })
+        .then(token => {
+          return token;
+        })
+        .catch(err => {
+          console.log(err);
+        });
+
       await userService
         .post(params, token)
         .then(() => {
@@ -111,6 +116,7 @@ export default {
         .catch(err => {
           console.log(err);
         });
+
       this.isLoading = false;
     }
   }
