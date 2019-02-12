@@ -72,6 +72,14 @@ export default {
         })
         .then(() => {
           this.$router.push("/");
+        })
+        .catch(err => {
+          if (
+            err.code === "auth/wrong-password" ||
+            err.code === "auth/user-not-found"
+          ) {
+            alert(err.message);
+          }
         });
       this.isLoading = false;
     }
