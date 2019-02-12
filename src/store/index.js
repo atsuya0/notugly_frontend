@@ -9,7 +9,7 @@ Vue.use(Vuex);
 
 const state = {
   auth: {
-    token: localStorage.getItem("token"),
+    token: null,
     uid: null
   },
   sexList: ["WOMAN", "MAN"]
