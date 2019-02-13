@@ -74,23 +74,23 @@ export default {
       this.isLoading = false;
     },
     favorite: async function(params) {
-      await favoriteService
+      return await favoriteService
         .post(params, this.$store.state.auth.token)
         .then(() => {
           this.isFavorited = true;
         })
         .catch(err => {
-          console.log(err);
+          throw err;
         });
     },
     cancelFavorite: async function(params) {
-      await favoriteService
+      return await favoriteService
         .delete(params, this.$store.state.auth.token)
         .then(() => {
           this.isFavorited = false;
         })
         .catch(err => {
-          console.log(err);
+          throw err;
         });
     },
     toggleFavorite: async function() {
