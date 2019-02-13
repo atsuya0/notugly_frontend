@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-app id="inspire">
-      <Header :path="$route.path" />
+      <Header />
       <v-content>
         <router-view />
       </v-content>

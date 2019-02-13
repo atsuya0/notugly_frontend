@@ -6,7 +6,7 @@
       </router-link>
     </v-toolbar-title>
     <v-spacer></v-spacer>
-    <header-dropdown :menu="menu" v-if="!isSignPage()" />
+    <header-dropdown :menu="menu" v-if="$route.meta.requiresAuth" />
   </v-toolbar>
 </template>
 
@@ -23,20 +23,6 @@ export default {
       { title: "マイページ", link: "mypage" },
       { title: "サインアウト", link: "signout" }
     ]
-  }),
-  props: {
-    path: {
-      type: String,
-      required: true
-    }
-  },
-  methods: {
-    isSignPage: function() {
-      if (this.path === "/signup" || this.path === "/signin") {
-        return true;
-      }
-      return false;
-    }
-  }
+  })
 };
 </script>
