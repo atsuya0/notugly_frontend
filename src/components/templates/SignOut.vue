@@ -7,7 +7,7 @@ export default {
   name: "SignOut",
   created: function() {
     this.$store.dispatch("signOut");
-    this.$router.push("/signin");
+    this.$router.push("{ name: 'signin' }");
   }
 };
 </script>
